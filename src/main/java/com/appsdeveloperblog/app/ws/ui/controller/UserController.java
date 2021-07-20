@@ -27,8 +27,8 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
-		UserRest returnValue=new UserRest();
+	public UserDto createUser(@RequestBody UserDetailsRequestModel userDetails) {
+		//UserRest returnValue=new UserRest();
 		
 		UserDto userDto=new UserDto();
 		BeanUtils.copyProperties(userDetails, userDto);
@@ -36,9 +36,9 @@ public class UserController {
 		UserDto createdUser=userService.createdUser(userDto);
 		BeanUtils.copyProperties(createdUser, userDto);
 		
-		return returnValue;
+		return userDto;
 	}
-	
+	   
 	@PutMapping
 	public String updateUser() {
 		return "update users was called";
