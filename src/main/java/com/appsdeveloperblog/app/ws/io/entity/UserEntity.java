@@ -20,10 +20,27 @@ public class UserEntity implements Serializable {
 	@Column(nullable=false,length=50)
 	private String firstName;
 	
+	public UserEntity() {
+		
+	}
+
+	public UserEntity(long id, String userId, String firstName, String lastName, String email, String encryptedpassword,
+			String emailVerificationToken, boolean emailVerificationStatus) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.encryptedpassword = encryptedpassword;
+		this.emailVerificationToken = emailVerificationToken;
+		this.emailVerificationStatus = emailVerificationStatus;
+	}
+
 	@Column(nullable=false,length=50)
 	private String lastName;
 	
-	@Column(nullable=false,length=120)
+	@Column(nullable=false,length=120, unique = true)
 	private String email;
 	
 	@Column(nullable=false)
@@ -90,7 +107,7 @@ public class UserEntity implements Serializable {
 		this.emailVerificationToken = emailVerificationToken;
 	}
 
-	public boolean isEmailVerificationStatus() {
+	public boolean getEmailVerificationStatus() {
 		return emailVerificationStatus;
 	}
 
